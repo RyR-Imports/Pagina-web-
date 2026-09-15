@@ -290,29 +290,60 @@
     </a>
 
     <script>
-        // Carga automática de los 29 productos buscando la foto en la carpeta "img" de GitHub
-        const totalProducts = 29;
+        // Lista con las extensiones actualizadas (.heic y .JPG según me indicaste)
+        const products = [
+            { name: "Cashmere Haze Lotion", file: "prod_1.jpg" },
+            { name: "Love Spell Lotion", file: "prod_2.jpg" },
+            { name: "Coconut Passion Lotion", file: "prod_3.jpg" },
+            { name: "Glaze A La Mode Lotion", file: "prod_4.jpg" },
+            { name: "Pure Seduction Whipped Lotion", file: "prod_5.jpg" },
+            { name: "Velvet Bohemia Lotion", file: "prod_6.jpg" },
+            { name: "Love Spell Mist", file: "prod_7.jpg" },
+            { name: "Cashmere Haze Mist", file: "prod_8.jpg" },
+            { name: "Velvet Bohemia Mist", file: "prod_9.heic" },
+            { name: "Pure Seduction Whipped Mist", file: "prod_10.jpg" },
+            { name: "Pink Total Flirt Mist", file: "prod_11.jpg" },
+            { name: "Coconut Passion Mist", file: "prod_12.jpg" },
+            { name: "Pink Pretty & Pure Mist", file: "prod_13.jpg" },
+            { name: "Pure Seduction Shimmer Mist", file: "prod_14.jpg" },
+            { name: "Amber Romance Mist", file: "prod_15.jpg" },
+            { name: "Milky Madeleine Mist", file: "prod_16.heic" },
+            { name: "Velvet Petals Shimmer Mist", file: "prod_17.heic" },
+            { name: "CampMaster Camping Fan & Light", file: "prod_18.jpg" },
+            { name: "Palm Party Mini Hand Sanitizer (Strawberry)", file: "prod_19.JPG" },
+            { name: "Tapo Outdoor/Indoor Security Camera", file: "prod_20.heic" },
+            { name: "Urban Butterfly LED Mini Travel Mirror", file: "prod_21.JPG" },
+            { name: "Blink Mini 2K+ Dual Camera", file: "prod_22.jpg" },
+            { name: "Palm Party Mini Hand Sanitizer (Buttercream)", file: "prod_23.JPG" },
+            { name: "Aconic Home Wireless LED Puck Lights", file: "prod_24.jpg" },
+            { name: "Power Bank Magnético Ultra Delgado", file: "prod_25.heic" },
+            { name: "Pawsitively Funi Massage Brush with Mist", file: "prod_26.heic" },
+            { name: "Smoke & Mirrors Lip Gloss Set", file: "prod_27.heic" },
+            { name: "Ruby & Millie Liquid Blush", file: "prod_28.jpg" },
+            { name: "Aconic Home Motion Activated Solar LED Light", file: "prod_29.jpg" },
+            { name: "Bebe 6PC Pout Perfection Kit", file: "prod_30.jpg" },
+            { name: "Producto Especial R&R", file: "prod_31.jpg" }
+        ];
+
         let htmlContent = "";
 
-        for (let index = 0; index < totalProducts; index++) {
-            let num = index + 1;
-            let displayName = "Producto " + num;
-            let imagePath = `img/prod_${num}.jpg`;
-            
+        products.forEach(prod => {
+            let imagePath = prod.file; 
             htmlContent += `
-                <div class="product-card" data-name="${displayName.toLowerCase()}">
+                <div class="product-card" data-name="${prod.name.toLowerCase()}">
                     <div class="product-img-box">
-                        <img src="${imagePath}" alt="${displayName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300/1e1e1e/888?text=R%26R+Imports';">
+                        <img src="${imagePath}" alt="${prod.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300/1e1e1e/888?text=R%26R+Imports';">
                     </div>
                     <div class="product-info">
-                        <div class="product-title">${displayName}</div>
+                        <div class="product-title">${prod.name}</div>
                         <div class="original-badge">
                             ✓ 100% ORIGINAL
                         </div>
                     </div>
                 </div>
             `;
-        }
+        });
+
         document.getElementById('productCatalog').innerHTML = htmlContent;
 
         function filterProducts() {

@@ -174,10 +174,30 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+        }
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .product-img-placeholder {
             font-size: 3rem;
             color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            gap: 5px;
+        }
+        .upload-hint {
+            font-size: 0.75rem;
+            color: #aaa;
+            background: rgba(0,0,0,0.6);
+            padding: 4px 10px;
+            border-radius: 4px;
         }
         .product-info {
             padding: 15px;
@@ -207,6 +227,9 @@
             gap: 5px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        .hidden-file-input {
+            display: none;
         }
 
         /* Floating WhatsApp Button */
@@ -290,13 +313,21 @@
 
             let htmlContent = "";
             products.forEach((name, index) => {
+                let num = index + 1;
+                let savedImg = localStorage.getItem('rr_prod_' + num) || '';
+                
                 htmlContent += `
                     <div class="product-card" data-name="${name.toLowerCase()}">
-                        <div class="product-img-box">
-                            <div class="product-img-placeholder">📦</div>
+                        <div class="product-img-box" onclick="document.getElementById('file_${num}').click()">
+                            <img id="img_view_${num}" src="${savedImg}" style="${savedImg ? '' : 'display:none;'}" alt="${name}">
+                            <div id="placeholder_${num}" class="product-img-placeholder" style="${savedImg ? 'display:none;' : ''}">
+                                📦
+                                <span class="upload-hint">📷 Toca para subir foto</span>
+                            </div>
+                            <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="loadProductImage(event, ${num})">
                         </div>
                         <div class="product-info">
-                            <div class="product-title">${index + 1}. ${name}</div>
+                            <div class="product-title">${num}. ${name}</div>
                             <div class="original-badge">
                                 ✓ 100% ORIGINAL
                             </div>
@@ -305,6 +336,21 @@
                 `;
             });
             document.write(htmlContent);
+
+            function loadProductImage(event, num) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const base64Image = e.target.result;
+                        localStorage.setItem('rr_prod_' + num, base64Image);
+                        document.getElementById('img_view_' + num).src = base64Image;
+                        document.getElementById('img_view_' + num).style.display = 'block';
+                        document.getElementById('placeholder_' + num).style.display = 'none';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
         </script>
     </div>
 

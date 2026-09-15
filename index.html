@@ -1,712 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>R&R Imports | Originales de USA a Colombia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&R Imports - Catálogo Oficial</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0b0b; color: #ffffff; padding-bottom: 80px; }
+        
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(90deg, #f39c12, #e67e22, #f39c12);
+            color: #000;
+            text-align: center;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        /* Header Section */
+        .header-container {
+            text-align: center;
+            padding: 25px 20px 15px 20px;
+            background: #111;
+            border-bottom: 2px solid #b71c1c;
+        }
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .brand-title span { color: #b71c1c; }
+        
+        /* Gold/Red Banner Card */
+        .promo-banner {
+            max-width: 650px;
+            margin: 15px auto;
+            background: linear-gradient(135deg, #2a0808, #121212, #3d0c0c);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        .promo-banner h2 {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .promo-banner p {
+            color: #ccc;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0
-}
+        /* Subtitle */
+        .subtitle-section {
+            text-align: center;
+            margin: 25px 0 15px 0;
+        }
+        .subtitle-section h1 {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .subtitle-section span {
+            color: #f39c12;
+            text-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
+        }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#0d0d0d;
-    color:#fff
-}
+        /* Contact Box */
+        .contact-box {
+            max-width: 500px;
+            margin: 20px auto 30px auto;
+            background: linear-gradient(145deg, #8b0000, #5c0000);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.4);
+        }
+        .contact-box h3 {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .whatsapp-btn-main {
+            display: block;
+            background: #128c7e;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .whatsapp-btn-main:hover {
+            background: #075e54;
+            transform: translateY(-2px);
+        }
+        .whatsapp-label {
+            font-size: 0.75rem;
+            color: #ffcccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 2px;
+        }
 
-/* Barra superior */
-.top{
-    background:linear-gradient(90deg,#ffcc00,#ff9900);
-    color:#000;
-    text-align:center;
-    padding:12px;
-    font-weight:800;
-    font-size:14px;
-    letter-spacing:.5px
-}
+        /* Search Bar */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            padding: 0 15px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 2px solid #333;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-input:focus {
+            border-color: #d4af37;
+        }
 
-/* Encabezado */
-.header{
-    background:#000;
-    padding:22px;
-    text-align:center;
-    font-size:28px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    border-bottom:2px solid #222
-}
+        /* Products Grid */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
+        }
+        .product-img-box {
+            width: 100%;
+            height: 220px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-img-placeholder {
+            font-size: 3rem;
+            color: #444;
+        }
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .original-badge {
+            background: rgba(46, 125, 50, 0.2);
+            border: 1px solid #4caf50;
+            color: #81c784;
+            padding: 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-.header b{
-    color:#ff3b3b;
-    text-shadow:0 0 10px rgba(255,59,59,.5)
-}
-
-/* Banner */
-.banner{
-    width:100%;
-    background:#000;
-    text-align:center
-}
-
-.banner img{
-    width:100%;
-    max-height:450px;
-    object-fit:cover;
-    display:block
-}
-
-/* Hero */
-.hero{
-    background:radial-gradient(circle,#1a1a1a 0%,#0d0d0d 100%);
-    padding:40px 20px;
-    text-align:center
-}
-
-.hero h1{
-    font-size:30px;
-    line-height:1.3;
-    font-weight:800
-}
-
-.hero span{
-    color:#ffcc00;
-    text-shadow:0 0 12px rgba(255,204,0,.4)
-}
-
-/* Contacto */
-.contacto-box{
-    background:linear-gradient(135deg,#990000,#cc0000);
-    color:#fff;
-    margin:25px auto;
-    max-width:600px;
-    border-radius:18px;
-    padding:24px;
-    text-align:center;
-    border:2px solid #ffcc00;
-    box-shadow:0 8px 25px rgba(204,0,0,.4)
-}
-
-.contacto-box h3{
-    font-size:19px;
-    margin-bottom:14px;
-    color:#ffcc00;
-    font-weight:700
-}
-
-.numeros-container{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    margin-top:12px
-}
-
-.numero-item{
-    background:rgba(0,0,0,.4);
-    padding:12px;
-    border-radius:12px;
-    border:1px solid rgba(255,204,0,.3)
-}
-
-.numero-label{
-    font-size:12px;
-    color:#ffcc00;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:3px;
-    font-weight:600
-}
-
-.numero-link{
-    color:#fff;
-    text-decoration:none;
-    font-size:22px;
-    font-weight:800;
-    letter-spacing:.5px;
-    display:inline-block;
-    transition:all .2s
-}
-
-.numero-link:hover{
-    color:#ffcc00;
-    transform:scale(1.03)
-}
-
-/* Productos */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-    gap:22px;
-    padding:30px 20px;
-    background:#f0f2f5
-}
-
-.producto-card{
-    background:#fff;
-    color:#000;
-    border-radius:18px;
-    padding:16px;
-    text-align:center;
-    box-shadow:0 6px 18px rgba(0,0,0,.12);
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    transition:transform .3s ease,box-shadow .3s ease
-}
-
-.producto-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 12px 25px rgba(0,0,0,.2)
-}
-
-.producto-card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:12px;
-    margin-bottom:12px
-}
-
-.producto-card h3{
-    font-size:17px;
-    margin-bottom:6px;
-    font-weight:700;
-    color:#111
-}
-
-.producto-card p{
-    font-size:13px;
-    color:#1b5e20;
-    margin-bottom:14px;
-    font-weight:700;
-    background:#e8f5e9;
-    padding:4px;
-    border-radius:6px
-}
-
-/* Footer */
-.footer-verde{
-    background:linear-gradient(90deg,#e8ffe8,#d4edda);
-    color:#0a3d0a;
-    text-align:center;
-    padding:35px 20px;
-    font-weight:800;
-    border-top:4px solid #25D366;
-    font-size:16px
-}
-
-/* WhatsApp flotante */
-.whatsapp-float{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background-color:#25d366;
-    color:white;
-    border-radius:50px;
-    padding:14px 20px;
-    box-shadow:0 6px 20px rgba(37,211,102,.5);
-    z-index:1000;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    font-weight:800;
-    font-size:15px;
-    transition:all .3s ease;
-    animation:pulse 2s infinite
-}
-
-.whatsapp-float:hover{
-    background-color:#20ba5a;
-    transform:scale(1.1)
-}
-
-@keyframes pulse{
-    0%{
-        box-shadow:0 0 0 0 rgba(37,211,102,.7)
-    }
-
-    70%{
-        box-shadow:0 0 0 15px rgba(37,211,102,0)
-    }
-
-    100%{
-        box-shadow:0 0 0 0 rgba(37,211,102,0)
-    }
-}
-
-/* Celulares */
-@media(max-width:600px){
-
-    .header{
-        font-size:24px
-    }
-
-    .hero h1{
-        font-size:25px
-    }
-
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-        padding:15px 10px
-    }
-
-    .producto-card{
-        padding:10px;
-        border-radius:12px
-    }
-
-    .producto-card img{
-        height:170px
-    }
-
-    .producto-card h3{
-        font-size:14px
-    }
-
-    .producto-card p{
-        font-size:11px
-    }
-
-    .numero-link{
-        font-size:19px
-    }
-
-    .whatsapp-float{
-        bottom:18px;
-        right:15px;
-        padding:12px 16px;
-        font-size:14px
-    }
-}   .producto-card img{
-    height:250px !important;
-    width:100% !important;
-    object-fit:cover !important;
-    object-position:center !important;
-    background:#fff;
-  }
-  .grid{
-}.grid{
-  display:grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap:12px !important;
-  padding:12px !important;
-}
-.producto-card{
-  width:100% !important;
-  background:white !important;
-  border-radius:16px !important;
-  overflow:hidden !important;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1) !important;
-}
-.producto-card img{
-  width:100% !important;
-  height:180px !important;
-  object-fit:cover !important;
-  object-position:center !important;
-  display:block !important;
-}
-.producto-card h3{
-  font-size:13px !important;
-  text-align:center !important;
-  margin:8px 0 4px 0 !important;
-}
-}
-</style>
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- BARRA SUPERIOR -->
-<div class="top">
-    📦 ¡IMPORTAMOS LO QUE NECESITES DE USA - 100% ORIGINAL! 🇺🇸
-</div>
+    <div class="top-banner">
+        📦 ¡IMPORTAMOS LO QUE NECESITES DE USA – 100% ORIGINAL! 🇺🇸
+    </div>
 
-<!-- LOGO -->
-<div class="header">
-    R&R <b>IMPORTS</b>
-</div>
+    <div class="header-container">
+        <div class="brand-title">R&R <span>IMPORTS</span></div>
+        
+        <div class="promo-banner">
+            <h2>R&R IMPORTS | DESDE USA</h2>
+            <p>100% ORIGINAL • IMPORTADORES • DISTRIBUIDORES • GARANTÍA</p>
+        </div>
+    </div>
 
-<!-- BANNER -->
-<div class="banner">
-    <img src="IMG_5323.jpeg" alt="Banner R&R Imports">
-</div>
+    <div class="subtitle-section">
+        <h1>TU ENCARGO <br><span>DE USA A COLOMBIA</span></h1>
+    </div>
 
-<!-- TITULO -->
-<div class="hero">
-    <h1>
-        TU ENCARGO
-        <br>
-        <span>DE USA A COLOMBIA</span>
-    </h1>
-</div>
-
-<!-- CONTACTO -->
-<div class="contacto-box">
-
-    <h3>
-        📞 ¡CONTÁCTANOS DIRECTAMENTE!
-    </h3>
-
-    <div class="numeros-container">
-
-        <div class="numero-item">
-
-            <div class="numero-label">
-                WhatsApp de Atención 1
-            </div>
-
-            <a
-                class="numero-link"
-                href="https://wa.me/573208164776?text=Hola,%20estoy%20viendo%20su%20página%20web%20y%20quiero%20más%20información"
-                target="_blank">
-
-                320 816 4776
-
+    <div class="contact-box">
+        <h3>📞 ¡CONTÁCTANOS DIRECTAMENTE!</h3>
+        
+        <div style="margin-bottom: 12px;">
+            <span class="whatsapp-label">WHATSAPP DE ATENCIÓN 1</span>
+            <a href="https://wa.me/573208164776?text=Hola,%20estoy%20interesado(a)%20en%20los%20productos%20importados%20de%20R%26R%20Imports" class="whatsapp-btn-main" target="_blank">
+                💬 320 816 4776
             </a>
-
         </div>
 
-
-        <div class="numero-item">
-
-            <div class="numero-label">
-                WhatsApp de Atención 2
-            </div>
-
-            <a
-                class="numero-link"
-                href="https://wa.me/573113607290?text=Hola,%20estoy%20viendo%20su%20página%20web%20y%20quiero%20más%20información"
-                target="_blank">
-
-                311 360 7290
-
+        <div>
+            <span class="whatsapp-label">WHATSAPP DE ATENCIÓN 2</span>
+            <a href="https://wa.me/573113607290?text=Hola,%20estoy%20interesado(a)%20en%20los%20productos%20importados%20de%20R%26R%20Imports" class="whatsapp-btn-main" target="_blank">
+                💬 311 360 7290
             </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- PRODUCTOS -->
-<div class="grid">
-
-    <div class="producto-card">
-        <img src="IMG_4905.jpeg" alt="Producto USA 1">
-        <div>
-            <h3>Producto USA 1</h3>
-            <p>✓ 100% ORIGINAL</p>
         </div>
     </div>
 
-
-    <div class="producto-card">
-        <img src="IMG_4925.jpeg" alt="Producto USA 2">
-        <div>
-            <h3>Producto USA 2</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar producto en el catálogo..." onkeyup="filterProducts()">
     </div>
 
+    <div class="catalog-container" id="productCatalog">
+        <script>
+            const products = [
+                "Coconut Passion", "Pink Total Flirt", "Amber Romance", "Pink Pretty & Pure", 
+                "Pure Seduction Shimmer", "Milky Madeleine", "Glaze À La Mode", "Velvet Petals Shimmer",
+                "CampMaster Camping Fan & Light", "Palm Party Mini Hand Sanitizer - Strawberry Donut", 
+                "Tapo 2K Indoor/Outdoor Home Security Wi-Fi Camera", "Urban Butterfly LED Mini Travel Mirror", 
+                "Blink Mini 2K+ (Two Cameras)", "Bebe 6 PC Pout Perfection Kit", "Smoke & Mirrors Lip Gloss Set", 
+                "Ruby & Millie Liquid Blush", "Palm Party Mini Hand Sanitizer - Buttercream Cookie", 
+                "Pawsitively Fun! Massage Brush with Mist", "Aconic Home Motion Activated Solar Sensor LED Light",
+                "Producto Importado 20", "Producto Importado 21", "Producto Importado 22", 
+                "Producto Importado 23", "Producto Importado 24", "Producto Importado 25", 
+                "Producto Importado 26", "Producto Importado 27", "Producto Importado 28", "Producto Importado 29"
+            ];
 
-    <div class="producto-card">
-        <img src="IMG_4926.jpeg" alt="Producto USA 3">
-        <div>
-            <h3>Producto USA 3</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
+            let htmlContent = "";
+            products.forEach((name, index) => {
+                htmlContent += `
+                    <div class="product-card" data-name="${name.toLowerCase()}">
+                        <div class="product-img-box">
+                            <div class="product-img-placeholder">📦</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">${index + 1}. ${name}</div>
+                            <div class="original-badge">
+                                ✓ 100% ORIGINAL
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.write(htmlContent);
+        </script>
     </div>
 
+    <a href="https://wa.me/573208164776?text=Hola,%20quiero%20hacer%20un%20pedido%20con%20R%26R%20Imports" class="whatsapp-float" target="_blank">
+        💬 ¡Escríbenos!
+    </a>
 
-    <div class="producto-card">
-        <img src="IMG_4939.jpeg" alt="Producto USA 4">
-        <div>
-            <h3>Producto USA 4</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_4940.png" alt="Producto USA 5">
-        <div>
-            <h3>Producto USA 5</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_4942.png" alt="Producto USA 6">
-        <div>
-            <h3>Producto USA 6</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_4943.png" alt="Producto USA 7">
-        <div>
-            <h3>Producto USA 7</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_4945.jpeg" alt="Producto USA 8">
-        <div>
-            <h3>Producto USA 8</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_4946.jpeg" alt="Producto USA 9">
-        <div>
-            <h3>Producto USA 9</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_5167.jpeg" alt="Producto USA 10">
-        <div>
-            <h3>Producto USA 10</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_5168.jpeg" alt="Producto USA 11">
-        <div>
-            <h3>Producto USA 11</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_5170.jpeg" alt="Producto USA 12">
-        <div>
-            <h3>Producto USA 12</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    <div class="producto-card">
-        <img src="IMG_5171.jpeg" alt="Producto USA 13">
-        <div>
-            <h3>Producto USA 13</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    class="producto-card">
-        <img src="IMG_5172.jpeg" alt="Producto USA 14">
-        <div>
-            <h3>Producto USA 14</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    class="producto-card">
-        <img src="IMG_5261.jpeg" alt="Producto USA 15">
-        <div>
-            <h3>Producto USA 15</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    class="producto-card">
-        <img src="IMG_5291.jpeg" alt="Producto USA 16">
-        <div>
-            <h3>Producto USA 16</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div>
-
-
-    class="producto-card">
-        <img src="IMG_5267.png" alt="Producto USA 17">
-        <div>
-            <h3>Producto USA 17</h3>
-            <p>✓ 100% ORIGINAL</p>
-        </div>
-    </div> 
-    class="producto-card">
-  <img src="54e43597-2995-2ed3-ab28-1e84ffd9cb19.jpeg" alt="Producto USA 20">
-  <div>
-    <h3>Producto USA 20</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
- class="producto-card">
-  <img src="5c06d951-985b-4bb0-43a6-790923b3ab1e.jpeg" alt="Producto USA 21">
-  <div>
-    <h3>Producto USA 21</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
- class="producto-card">
-  <img src="5c06d951-985b-4bb0-43a6-790923b3ab1e.jpeg" alt="Producto USA 22">
-  <div>
-    <h3>Producto USA 22</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-</div>
-
- class="producto-card">
-  <img src="6babc1bb-e25a-7920-4796-f732553bdab6.jpeg" alt="Producto USA 23">
-  <div>
-    <h3>Producto USA 23</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
- <div class="producto-card">
-  <img src="p24.jpeg">
-  <div>
-    <h3>Producto USA 24</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="p25.jpeg">
-  <div>
-    <h3>Producto USA 25</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="p26.jpeg">
-  <div>
-    <h3>Producto USA 26</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="p27.jpeg">
-  <div>
-    <h3>Producto USA 27</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="p28.jpeg">
-  <div>
-    <h3>Producto USA 28</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="9b9b41cf-475e-ae70-d6a1-f093510e1bfc.png">
-  <div>
-    <h3>Producto USA 29</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="IMG_5506.png">
-  <div>
-    <h3>Producto USA 30</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="IMG_5514.png">
-  <div>
-    <h3>Producto USA 31</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-            <div class="producto-card">
-  <img src="IMG_5522.png">
-  <div>
-    <h3>Producto USA 32</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="IMG_5523.png">
-  <div>
-    <h3>Producto USA 33</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="a601c163-b2c3-af0a-7434-e4f1b8058cc5.jpeg">
-  <div>
-    <h3>Producto USA 34</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-<div class="producto-card">
-  <img src="f9a5b2b0-90b9-655b-b881-f79541288ec9.jpeg">
-  <div>
-    <h3>Producto USA 35</h3>
-    <p>✓ 100% ORIGINAL</p>
-  </div>
-</div>
-
-
-
-
-<!-- FOOTER -->
-<div class="footer-verde">
-    💚 Familia R&R - Productos 100% originales de USA 🇺🇸
-</div>
-
-
-<!-- WHATSAPP FLOTANTE -->
-<a
-    href="https://wa.me/573208164776?text=Hola,%20estoy%20viendo%20su%20página%20web%20y%20quiero%20más%20información"
-    class="whatsapp-float"
-    target="_blank">
-
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="30"
-        viewBox="0 0 24 24"
-        fill="white">
-
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-
-    </svg>
-
-    ¡Escríbenos!
-
-</a>
-
+    <script>
+        function filterProducts() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('product-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].getAttribute('data-name');
+                if (name.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>

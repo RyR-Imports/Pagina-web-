@@ -8,7 +8,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0b0b0b; color: #ffffff; padding-bottom: 80px; }
         
-        /* Top Banner */
         .top-banner {
             background: linear-gradient(90deg, #f39c12, #e67e22, #f39c12);
             color: #000;
@@ -19,7 +18,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* Header Section */
         .header-container {
             text-align: center;
             padding: 25px 20px 15px 20px;
@@ -34,7 +32,6 @@
         }
         .brand-title span { color: #b71c1c; }
         
-        /* Gold/Red Banner Card */
         .promo-banner {
             max-width: 650px;
             margin: 15px auto;
@@ -58,7 +55,6 @@
             letter-spacing: 2px;
         }
 
-        /* Subtitle */
         .subtitle-section {
             text-align: center;
             margin: 25px 0 15px 0;
@@ -74,7 +70,6 @@
             text-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
         }
 
-        /* Contact Box */
         .contact-box {
             max-width: 500px;
             margin: 20px auto 30px auto;
@@ -104,12 +99,7 @@
             margin: 10px 0;
             font-weight: bold;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .whatsapp-btn-main:hover {
-            background: #075e54;
-            transform: translateY(-2px);
         }
         .whatsapp-label {
             font-size: 0.75rem;
@@ -120,7 +110,6 @@
             margin-bottom: 2px;
         }
 
-        /* Search Bar */
         .search-container {
             max-width: 500px;
             margin: 0 auto 30px auto;
@@ -135,13 +124,8 @@
             color: #fff;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
-        }
-        .search-input:focus {
-            border-color: #d4af37;
         }
 
-        /* Products Grid */
         .catalog-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -155,15 +139,9 @@
             border: 1px solid #2a2a2a;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-            border-color: #d4af37;
         }
         .product-img-box {
             width: 100%;
@@ -182,22 +160,24 @@
             object-fit: cover;
         }
         .product-img-placeholder {
-            font-size: 3rem;
-            color: #444;
+            font-size: 2.5rem;
+            color: #aaa;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
             height: 100%;
-            gap: 5px;
+            gap: 6px;
         }
         .upload-hint {
             font-size: 0.75rem;
-            color: #aaa;
-            background: rgba(0,0,0,0.6);
-            padding: 4px 10px;
-            border-radius: 4px;
+            color: #fff;
+            background: rgba(183, 28, 28, 0.9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
         .product-info {
             padding: 15px;
@@ -226,13 +206,11 @@
             justify-content: center;
             gap: 5px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         .hidden-file-input {
             display: none;
         }
 
-        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -248,10 +226,6 @@
             gap: 8px;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 1000;
-            transition: transform 0.3s;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.05);
         }
     </style>
 </head>
@@ -263,7 +237,6 @@
 
     <div class="header-container">
         <div class="brand-title">R&R <span>IMPORTS</span></div>
-        
         <div class="promo-banner">
             <h2>R&R IMPORTS | DESDE USA</h2>
             <p>100% ORIGINAL • IMPORTADORES • DISTRIBUIDORES • GARANTÍA</p>
@@ -276,14 +249,12 @@
 
     <div class="contact-box">
         <h3>📞 ¡CONTÁCTANOS DIRECTAMENTE!</h3>
-        
         <div style="margin-bottom: 12px;">
             <span class="whatsapp-label">WHATSAPP DE ATENCIÓN 1</span>
             <a href="https://wa.me/573208164776?text=Hola,%20estoy%20interesado(a)%20en%20los%20productos%20importados%20de%20R%26R%20Imports" class="whatsapp-btn-main" target="_blank">
                 💬 320 816 4776
             </a>
         </div>
-
         <div>
             <span class="whatsapp-label">WHATSAPP DE ATENCIÓN 2</span>
             <a href="https://wa.me/573113607290?text=Hola,%20estoy%20interesado(a)%20en%20los%20productos%20importados%20de%20R%26R%20Imports" class="whatsapp-btn-main" target="_blank">
@@ -319,10 +290,10 @@
                 htmlContent += `
                     <div class="product-card" data-name="${name.toLowerCase()}">
                         <div class="product-img-box" onclick="document.getElementById('file_${num}').click()">
-                            <img id="img_view_${num}" src="${savedImg}" style="${savedImg ? '' : 'display:none;'}" alt="${name}">
+                            <img id="img_view_${num}" src="${savedImg}" style="${savedImg ? '' : 'display:none; width:100%; height:100%; object-fit:cover;'}" alt="${name}">
                             <div id="placeholder_${num}" class="product-img-placeholder" style="${savedImg ? 'display:none;' : ''}">
                                 📦
-                                <span class="upload-hint">📷 Toca para subir foto</span>
+                                <span class="upload-hint">📷 Tocar para poner foto</span>
                             </div>
                             <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="loadProductImage(event, ${num})">
                         </div>
@@ -344,8 +315,9 @@
                     reader.onload = function(e) {
                         const base64Image = e.target.result;
                         localStorage.setItem('rr_prod_' + num, base64Image);
-                        document.getElementById('img_view_' + num).src = base64Image;
-                        document.getElementById('img_view_' + num).style.display = 'block';
+                        const imgElem = document.getElementById('img_view_' + num);
+                        imgElem.src = base64Image;
+                        imgElem.style.display = 'block';
                         document.getElementById('placeholder_' + num).style.display = 'none';
                     };
                     reader.readAsDataURL(file);
@@ -362,7 +334,6 @@
         function filterProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('product-card');
-            
             for (let i = 0; i < cards.length; i++) {
                 let name = cards[i].getAttribute('data-name');
                 if (name.includes(input)) {

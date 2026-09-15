@@ -155,7 +155,6 @@
             justify-content: space-between;
         }
         
-        /* Usamos label para que sea un disparador nativo infalible al tacto */
         .product-img-box {
             width: 100%;
             height: 180px;
@@ -170,7 +169,7 @@
         .product-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Muestra la foto completa sin recortar */
+            object-fit: contain; /* Foto completa sin recortar */
         }
         .product-img-placeholder {
             font-size: 2rem;
@@ -326,7 +325,7 @@
                                 <span class="upload-hint">📷 Tocar para poner foto</span>
                             </div>
                         </label>
-                        <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="loadProductImage(event, ${num})">
+                        <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="compressAndSaveImage(event, ${num})">
                         <div class="product-info">
                             <div class="product-title">${displayName}</div>
                             <div class="original-badge">
@@ -338,27 +337,60 @@
             }
             document.write(htmlContent);
 
-            function loadProductImage(event, num) {
+            function compressAndSaveImage(event, num) {
                 const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const base64Image = e.target.result;
-                        localStorage.setItem('rr_prod_' + num, base64Image);
-                        const imgElem = document.getElementById('img_view_' + num);
-                        imgElem.src = base64Image;
-                        imgElem.style.display = 'block';
-                        document.getElementById('placeholder_' + num).style.display = 'none';
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 800;
+                        const MAX_HEIGHT = 800;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // Comprimimos a JPG con calidad 0.7 para que ocupe muy poco espacio en la memoria
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+
+                        try {
+                            localStorage.setItem('rr_prod_' + num, compressedDataUrl);
+                            const imgElem = document.getElementById('img_view_' + num);
+                            imgElem.src = compressedDataUrl;
+                            imgElem.style.display = 'block';
+                            document.getElementById('placeholder_' + num).style.display = 'none';
+                        } catch (err) {
+                            alert("El almacenamiento está lleno o la imagen es muy grande. Intenta con otra foto.");
+                        }
                     };
-                    reader.readAsDataURL(file);
-                }
+                };
+                reader.readAsDataURL(file);
             }
         </script>
     </div>
 
     <!-- SELLO FINAL DE LA PÁGINA -->
     <div class="family-seal">
-        <h2>R&R IMPPORTS</h2>
+        <h2>R&R IMPORTS</h2>
         <p>FAMILIA R Y R. 100% CONFIABLE</p>
     </div>
 

@@ -292,13 +292,35 @@ body{
     background:#fff;
   }
   .grid{
-    display:grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap:12px !important;
-  } .producto-card img{
-  height: 320px !important;
-  object-fit: contain !important;
-  background: #fff !important;
+   .grid{
+  display:grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap:14px !important;
+  padding: 12px !important;
+}
+.producto-card{
+  background:#fff !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  padding-bottom:12px !important;
+}
+.producto-card img{
+  width:100% !important;
+  height:210px !important;
+  object-fit:cover !important;
+  border-radius:18px 18px 0 0 !important;
+  background:#fff !important;
+}
+.producto-card h3{
+  font-size:14px !important;
+  text-align:center !important;
+  margin: 10px 0 6px 0 !important;
+}
+.producto-card p{
+  margin: 0 10px !important;
+  border-radius:10px !important;
+}
 }
 </style>
 </head>

@@ -154,10 +154,12 @@
             flex-direction: column;
             justify-content: space-between;
         }
+        
+        /* Usamos label para que sea un disparador nativo infalible al tacto */
         .product-img-box {
             width: 100%;
             height: 180px;
-            background: #1e1e1e; /* Fondo sutil para que luzca la foto completa */
+            background: #1e1e1e;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -168,7 +170,7 @@
         .product-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Cambio clave para que la imagen se vea completa sin recortarse */
+            object-fit: contain; /* Muestra la foto completa sin recortar */
         }
         .product-img-placeholder {
             font-size: 2rem;
@@ -307,10 +309,9 @@
 
     <div class="catalog-container" id="productCatalog">
         <script>
-            // Cantidad total de productos en el catálogo genérico
             const totalProducts = 29;
-
             let htmlContent = "";
+
             for (let index = 0; index < totalProducts; index++) {
                 let num = index + 1;
                 let displayName = "Producto " + num;
@@ -318,14 +319,14 @@
                 
                 htmlContent += `
                     <div class="product-card" data-name="${displayName.toLowerCase()}">
-                        <div class="product-img-box" onclick="document.getElementById('file_${num}').click()">
+                        <label for="file_${num}" class="product-img-box">
                             <img id="img_view_${num}" src="${savedImg}" style="${savedImg ? '' : 'display:none;'}" alt="${displayName}">
                             <div id="placeholder_${num}" class="product-img-placeholder" style="${savedImg ? 'display:none;' : ''}">
                                 📦
                                 <span class="upload-hint">📷 Tocar para poner foto</span>
                             </div>
-                            <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="loadProductImage(event, ${num})">
-                        </div>
+                        </label>
+                        <input type="file" id="file_${num}" class="hidden-file-input" accept="image/*" onchange="loadProductImage(event, ${num})">
                         <div class="product-info">
                             <div class="product-title">${displayName}</div>
                             <div class="original-badge">
@@ -357,7 +358,7 @@
 
     <!-- SELLO FINAL DE LA PÁGINA -->
     <div class="family-seal">
-        <h2>R&R IMPORTS</h2>
+        <h2>R&R IMPPORTS</h2>
         <p>FAMILIA R Y R. 100% CONFIABLE</p>
     </div>
 
